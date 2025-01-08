@@ -4,7 +4,7 @@
 class Node {
 public:
     int value;  // Значение узла
-    Node* next; // Указатель на следующий узел
+    Node *next; // Указатель на следующий узел
 
     // Конструктор узла
     Node(int val) : value(val), next(nullptr) {}
@@ -12,17 +12,17 @@ public:
 
 class LinkedList {
 private:
-    Node* head;  // Голова списка
+    Node *head;  // Голова списка
     int size;    // Размер списка
 
 public:
     // Конструктор
-    LinkedList(int* arr, int size) : head(nullptr), size(size) {
+    LinkedList(int *arr, int size) : head(nullptr), size(size) {
         if (size <= 0) {
             throw std::invalid_argument("Размер должен быть больше 0.");
         }
         head = new Node(arr[0]); // Создаем первый узел
-        Node* current = head;
+        Node *current = head;
 
         // Создаем последующие узлы из массива
         for (int i = 1; i < size; ++i) {
@@ -33,9 +33,9 @@ public:
 
     // Деструктор
     ~LinkedList() {
-        Node* current = head;
+        Node *current = head;
         while (current != nullptr) {
-            Node* next = current->next;
+            Node *next = current->next;
             delete current;
             current = next;
         }
@@ -43,7 +43,7 @@ public:
 
     // Метод для отображения списка
     void display() const {
-        Node* current = head;
+        Node *current = head;
         while (current != nullptr) {
             std::cout << current->value << " ";
             current = current->next;
@@ -61,7 +61,7 @@ public:
         if (index < 0 || index >= size) {
             throw std::out_of_range("Индекс за границами списка.");
         }
-        Node* current = head;
+        Node *current = head;
         for (int i = 0; i < index; ++i) {
             current = current->next;
         }
@@ -69,13 +69,13 @@ public:
     }
 
     // Метод для сложения двух списков
-    LinkedList* operator+(const LinkedList& other) {
+    LinkedList *operator+(const LinkedList& other) {
         if (this->size != other.size) {
             throw std::invalid_argument("Размерность двух списков не совпадает.");
         }
-        int* newData = new int[size];
-        Node* current1 = this->head;
-        Node* current2 = other.head;
+        int *newData = new int[size];
+        Node *current1 = this->head;
+        Node *current2 = other.head;
         for (int i = 0; i < size; ++i) {
             newData[i] = current1->value + current2->value;
             current1 = current1->next;
@@ -85,13 +85,13 @@ public:
     }
 
     // Метод для вычитания двух списков
-    LinkedList* operator-(const LinkedList& other) {
+    LinkedList *operator-(const LinkedList& other) {
         if (this->size != other.size) {
             throw std::invalid_argument("Размерность двух списков не совпадает.");
         }
-        int* newData = new int[size];
-        Node* current1 = this->head;
-        Node* current2 = other.head;
+        int *newData = new int[size];
+        Node *current1 = this->head;
+        Node *current2 = other.head;
         for (int i = 0; i < size; ++i) {
             newData[i] = current1->value - current2->value;
             current1 = current1->next;
@@ -101,13 +101,13 @@ public:
     }
 
     // Метод для умножения двух списков
-    LinkedList* operator*(const LinkedList& other) {
+    LinkedList *operator*(const LinkedList& other) {
         if (this->size != other.size) {
             throw std::invalid_argument("Размерность двух списков не совпадает.");
         }
-        int* newData = new int[size];
-        Node* current1 = this->head;
-        Node* current2 = other.head;
+        int *newData = new int[size];
+        Node *current1 = this->head;
+        Node *current2 = other.head;
         for (int i = 0; i < size; ++i) {
             newData[i] = current1->value * current2->value;
             current1 = current1->next;
@@ -117,13 +117,13 @@ public:
     }
 
     // Метод для деления двух списков
-    LinkedList* operator/(const LinkedList& other) {
+    LinkedList *operator/(const LinkedList& other) {
         if (this->size != other.size) {
             throw std::invalid_argument("Размерность двух списков не совпадает.");
         }
-        int* newData = new int[size];
-        Node* current1 = this->head;
-        Node* current2 = other.head;
+        int *newData = new int[size];
+        Node *current1 = this->head;
+        Node *current2 = other.head;
         for (int i = 0; i < size; ++i) {
             if (current2->value == 0) {
                 throw std::runtime_error("Division by zero");
@@ -156,22 +156,22 @@ int main() {
         list2.display();
 
         // Сложения
-        LinkedList* sum = list1 + list2;
+        LinkedList *sum = list1 + list2;
         std::cout << "Сумма: ";
         sum->display();
 
         // Вычитание
-        LinkedList* diff = list1 - list2;
+        LinkedList *diff = list1 - list2;
         std::cout << "Разность: ";
         diff->display();
 
         // Умножение
-        LinkedList* mul = list1 * list2;
+        LinkedList *mul = list1 * list2;
         std::cout << "Произведение: ";
         mul->display();
 
         // Деление
-        LinkedList* div = list1 / list2;
+        LinkedList *div = list1 / list2;
         std::cout << "Частное: ";
         div->display();
 
