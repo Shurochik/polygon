@@ -141,10 +141,12 @@ public:
 
 int main() {
     // Создание двух массивов одинаковой длины
-    int arr1[] = {1, 2, 3, 7};
+    int arr1[] = {1, 2, 3};
     int arr2[] = {4, 5, 6};
     int size1 = sizeof(arr1)/sizeof(arr1[0]);
     int size2 = sizeof(arr2)/sizeof(arr2[0]);
+    int index1 = 2;
+    int index2 = 1;
     
     try {
         LinkedList list1(arr1, size1);
@@ -156,6 +158,11 @@ int main() {
 
         std::cout << "List 2: ";
         list2.display();
+
+        //Взятие элемента по индексу
+        std::cout << "Элемент первого списка: " << list1.getData(index1) << std::endl;
+        std::cout << "Элемент второго списка: " << list2.getData(index2) << std::endl;
+        
 
         // Сложения
         LinkedList *sum = list1 + list2;
