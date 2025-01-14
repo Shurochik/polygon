@@ -141,12 +141,14 @@ public:
 
 int main() {
     // Создание двух массивов одинаковой длины
-    int arr1[] = {1, 2, 3};
+    int arr1[] = {1, 2, 3, 7};
     int arr2[] = {4, 5, 6};
+    int size1 = sizeof(arr1)/sizeof(arr1[0]);
+    int size2 = sizeof(arr2)/sizeof(arr2[0]);
     
     try {
-        LinkedList list1(arr1, 3);
-        LinkedList list2(arr2, 3);
+        LinkedList list1(arr1, size1);
+        LinkedList list2(arr2, size2);
 
         // Отображение списка
         std::cout << "List 1: ";
